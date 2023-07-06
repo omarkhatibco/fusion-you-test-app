@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@tourlane/fusion-you':
-    specifier: 0.3.1--canary.61.1191cde.0
-    version: 0.3.1--canary.61.1191cde.0(@types/react@18.2.14)(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^0.3.1
+    version: 0.3.1(@types/react@18.2.14)(react-dom@18.2.0)(react@18.2.0)
   '@types/node':
     specifier: 20.4.0
     version: 20.4.0
@@ -2438,8 +2438,8 @@ packages:
     dependencies:
       tslib: 2.6.0
 
-  /@tourlane/fusion-you@0.3.1--canary.61.1191cde.0(@types/react@18.2.14)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-CXHO6QPjDKmnEi0LWzkQTjnE7T6H+6iWy0YgaxTYvg11u3gHvHMpD7wIf3QBkMQvRaKaNq6PkGbY4FJYCG8FZA==}
+  /@tourlane/fusion-you@0.3.1(@types/react@18.2.14)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-/XYWsjGOrtP9fmgLhsShjwybsh7h93ILsyFWO039k4oEmsT5NVRSZO3xWKJIVDa0OOUWOXxqZOXBhRNNHiyCsw==}
     peerDependencies:
       react: ^18.x
       react-dom: ^18.x

@@ -15,6 +15,10 @@ export default defineConfig({
 
   ...sharedFusionConfig,
 
+  hash: process.env.NODE_ENV === 'production',
+  optimize: process.env.NODE_ENV === 'production',
+  minify: process.env.NODE_ENV === 'production',
+
   theme: {
     extend: {},
   },

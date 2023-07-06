@@ -10,7 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@tourlane/fusion-you": "0.3.1--canary.61.1191cde.0",
+    "@tourlane/fusion-you": "^0.3.1",
     "@types/node": "20.4.0",
     "@types/react": "18.2.14",
     "@types/react-dom": "18.2.6",
