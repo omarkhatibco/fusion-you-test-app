@@ -7,23 +7,23 @@
     "dev": "pnpm prepare && next dev",
     "build": "pnpm prepare && next build",
     "start": "next start",
-    "bundle":"ANALYZE=true pnpm build",
+    "bundle": "ANALYZE=true pnpm build",
     "lint": "next lint"
   },
   "dependencies": {
-    "@next/bundle-analyzer": "^13.4.8",
-    "@tourlane/fusion-you": "^0.3.1",
-    "@types/node": "20.4.0",
-    "@types/react": "18.2.14",
-    "@types/react-dom": "18.2.6",
-    "eslint": "8.44.0",
-    "eslint-config-next": "13.4.8",
-    "next": "13.4.8",
+    "@next/bundle-analyzer": "^13.4.16",
+    "@tourlane/fusion-you": "^0.8.2",
+    "@types/node": "20.5.0",
+    "@types/react": "18.2.20",
+    "@types/react-dom": "18.2.7",
+    "eslint": "8.47.0",
+    "eslint-config-next": "13.4.16",
+    "next": "13.4.16",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "typescript": "5.1.6"
   },
   "devDependencies": {
-    "@pandacss/dev": "^0.5.1"
+    "@pandacss/dev": "^0.11.0"
   }
 }
