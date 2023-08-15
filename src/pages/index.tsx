@@ -1,8 +1,44 @@
 import Head from 'next/head';
-import { f, VStack, Spacer, AspectRatio } from 'fusion-engine/jsx';
-import { Card, Button, Avatar } from '@tourlane/fusion-you';
+import { Button } from '@tourlane/fusion-you';
+import { ComponentPropsWithoutRef, useState } from 'react';
+import { css, cx, cva, RecipeVariantProps } from 'fusion-engine/css';
+import { f, Code, Container, VStack } from 'fusion-engine/jsx';
+import { code, container, image } from 'fusion-engine/patterns';
+import Image from 'next/image';
+
+const divStyle = cva({
+  base: {
+    padding: 4,
+    textStyle: 'display.lg',
+  },
+  variants: {
+    style: {
+      primary: {
+        backgroundColor: 'primary',
+        color: 'on.primary',
+      },
+      secondary: {
+        backgroundColor: 'secondary',
+        color: 'on.secondary',
+      },
+    },
+  },
+  defaultVariants: {
+    style: 'primary',
+  },
+});
+
+type DivVariants = NonNullable<RecipeVariantProps<typeof divStyle>>['style'];
+
+const Animate: React.FC<ComponentPropsWithoutRef<'div'>> = (props) => (
+  <div {...props} />
+);
+
+const MyCustomDiv = f(Animate, divStyle);
 
 export default function Home() {
+  const [style, setStyle] = useState<DivVariants>('primary');
+
   return (
     <>
       <Head>
@@ -11,59 +47,36 @@ export default function Home() {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <f.div bgColor='primary'>Hello</f.div>
-      <f.div maxW='360px' mx='auto'>
-        <Card.Root as='article' variant='outlined'>
-          <Card.Header>
-            <Avatar
-              htmlHeight={202.5}
-              htmlWidth={360}
-              name='Max Musterman'
-              src='https://i.pravatar.cc/300'
-            />
-            <VStack>
-              <f.h3 color={'on.surface'} textStyle={'title.md'}>
-                Shrimp and Chorizo Paella
-              </f.h3>
-              <f.p color={'on.surface'} textStyle={'body.md'}>
-                September 14, 2026
-              </f.p>
-            </VStack>
-            <Spacer />
-            <Button
-              aria-label='More'
-              icon='material-symbols:more-vert'
-              variant='text'
-            />
-          </Card.Header>
-          <AspectRatio>
-            <Card.Image
-              alt='my image'
-              src='https://picsum.photos/seed/tech/600/400'
-            />
-          </AspectRatio>
-          <Card.Body>
-            <VStack>
-              <f.h1 color='on.surface' textStyle={'body.lg'}>
-                Lorem ipsum dolor sit amet
-              </f.h1>
-              <f.h2 color='on.surface.variant' textStyle={'body.md'}>
-                consectetur adipiscing
-              </f.h2>
-            </VStack>
-            <f.p color='on.surface.variant' lineClamp={2}>
-              Duis a libero id lorem bibendum tincidunt vel et mi. Mauris
-              dapibus volutpat cursus. Phasellus scelerisque turpis at magna
-              mattis lobortis. Nulla id lectus vitae lorem consectetur
-              pellentesque.
-            </f.p>
-          </Card.Body>
-          <Card.Footer>
-            <Button variant='outlined'>Click me</Button>
-            <Button variant='filled'>Click me</Button>
-          </Card.Footer>
-        </Card.Root>
-      </f.div>
+      <Container>
+        z
+        <main className={container()}>
+          <Button onClick={() => setStyle('primary')}>Primary</Button>
+          <Button onClick={() => setStyle('secondary')}>secondary</Button>
+          <Animate className={divStyle({ style })}>
+            Hello <span>World!</span>
+          </Animate>
+          <MyCustomDiv style='secondary' textTransform={'uppercase'}>
+            Hello !!
+          </MyCustomDiv>
+          <f.footer
+            p={4}
+            textStyle={'label.lg'}
+            bgColor='error'
+            color='on.error'
+          >
+            I'm a footer
+          </f.footer>
+          <Code>Hello</Code>
+        </main>
+        <VStack gap={4}>
+          <Button onClick={() => setStyle('primary')}>Primary</Button>
+          <Button onClick={() => setStyle('secondary')}>secondary</Button>
+          <VStack gap={2}>
+            <Button onClick={() => setStyle('primary')}>Primary</Button>
+            <Button onClick={() => setStyle('secondary')}>secondary</Button>
+          </VStack>
+        </VStack>
+      </Container>
     </>
   );
 }
