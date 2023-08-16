@@ -1,44 +1,24 @@
 import Head from 'next/head';
-import { Button } from '@tourlane/fusion-you';
+import { Logo, Avatar, Card, Button, Icon } from '@tourlane/fusion-you';
 import { ComponentPropsWithoutRef, useState } from 'react';
 import { css, cx, cva, RecipeVariantProps } from 'fusion-engine/css';
-import { f, Code, Container, VStack } from 'fusion-engine/jsx';
-import { code, container, image } from 'fusion-engine/patterns';
-import Image from 'next/image';
-
-const divStyle = cva({
-  base: {
-    padding: 4,
-    textStyle: 'display.lg',
-  },
-  variants: {
-    style: {
-      primary: {
-        backgroundColor: 'primary',
-        color: 'on.primary',
-      },
-      secondary: {
-        backgroundColor: 'secondary',
-        color: 'on.secondary',
-      },
-    },
-  },
-  defaultVariants: {
-    style: 'primary',
-  },
-});
-
-type DivVariants = NonNullable<RecipeVariantProps<typeof divStyle>>['style'];
-
-const Animate: React.FC<ComponentPropsWithoutRef<'div'>> = (props) => (
-  <div {...props} />
-);
-
-const MyCustomDiv = f(Animate, divStyle);
+import {
+  f,
+  Code,
+  Container,
+  VStack,
+  Flex,
+  TopAppBar,
+  Grid,
+  GridItem,
+  HStack,
+  Box,
+  Divider,
+  Circle,
+  Image,
+} from 'fusion-engine/jsx';
 
 export default function Home() {
-  const [style, setStyle] = useState<DivVariants>('primary');
-
   return (
     <>
       <Head>
@@ -47,35 +27,134 @@ export default function Home() {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
+
       <Container>
-        z
-        <main className={container()}>
-          <Button onClick={() => setStyle('primary')}>Primary</Button>
-          <Button onClick={() => setStyle('secondary')}>secondary</Button>
-          <Animate className={divStyle({ style })}>
-            Hello <span>World!</span>
-          </Animate>
-          <MyCustomDiv style='secondary' textTransform={'uppercase'}>
-            Hello !!
-          </MyCustomDiv>
-          <f.footer
-            p={4}
-            textStyle={'label.lg'}
-            bgColor='error'
-            color='on.error'
-          >
-            I'm a footer
-          </f.footer>
-          <Code>Hello</Code>
-        </main>
-        <VStack gap={4}>
-          <Button onClick={() => setStyle('primary')}>Primary</Button>
-          <Button onClick={() => setStyle('secondary')}>secondary</Button>
-          <VStack gap={2}>
-            <Button onClick={() => setStyle('primary')}>Primary</Button>
-            <Button onClick={() => setStyle('secondary')}>secondary</Button>
-          </VStack>
-        </VStack>
+        <Flex w='full' display={'flex'} justifyContent={'space-between'} py={8}>
+          <Logo width={'108px'} />
+          <Avatar.Root>
+            <Avatar.Image
+              src='https://images.unsplash.com/photo-1492633423870-43d1cd2775eb?&w=128&h=128&dpr=2&q=80'
+              alt='Colm Tuite'
+            />
+            <Avatar.Fallback delayMs={600}>CT</Avatar.Fallback>
+          </Avatar.Root>
+        </Flex>
+        <Grid columns={{ base: 1, md: 2, lg: 3 }} gap={6}>
+          <GridItem>
+            <VStack gap={8}>
+              <Card.Root>
+                <Card.Header flexDir={'column'} gap={2}>
+                  <f.h1 textStyle={'display.sm'}>Titel of the trip</f.h1>
+                  <f.p textStyle='label.md'>Germany</f.p>
+                </Card.Header>
+                <Divider />
+                <Card.Body>
+                  <VStack gap={4}>
+                    <HStack gap={2}>
+                      <Box w='full'>
+                        <f.h2 textStyle='title.sm' color='on.surface.variant'>
+                          Duration
+                        </f.h2>
+                        <f.p textStyle='body.lg' color='on.surface'>
+                          [#] days
+                        </f.p>
+                      </Box>
+                      <Box w='full'>
+                        <f.h2 textStyle='title.sm' color='on.surface.variant'>
+                          Stops
+                        </f.h2>
+                        <f.p textStyle='body.lg' color='on.surface'>
+                          [#]
+                        </f.p>
+                      </Box>
+                    </HStack>
+                    <Box>
+                      <f.h2 textStyle='title.sm' color='on.surface.variant'>
+                        Interests
+                      </f.h2>
+                      <f.p textStyle='body.lg' color='on.surface'>
+                        [Theme], [Theme], [Theme]
+                      </f.p>
+                    </Box>
+                    <Box>
+                      <f.h2 textStyle='title.sm' color='on.surface.variant'>
+                        Includes
+                      </f.h2>
+                      <f.p textStyle='body.lg' color='on.surface'>
+                        Accommodation, Transport, Meals
+                      </f.p>
+                    </Box>
+                  </VStack>
+                </Card.Body>
+                <Divider />
+                <Card.Footer
+                  justifyContent={'flex-start'}
+                  alignItems={'center'}
+                >
+                  <Box mr='auto'>
+                    <f.h2 textStyle='title.sm' color='on.surface.variant'>
+                      From
+                    </f.h2>
+                    <f.p textStyle='body.lg' color='on.surface'>
+                      € 1,065 per person
+                    </f.p>
+                  </Box>
+                  <Button variant='tonal'>
+                    <Icon icon='material-symbols:edit-outline-sharp' />
+                    Edit
+                  </Button>
+                  <Button>Book</Button>
+                </Card.Footer>
+              </Card.Root>
+              <VStack gap={4}>
+                {['A', 'B', 'C', 'D', 'E', 'F'].map((item) => (
+                  <Flex
+                    key={item}
+                    rounded='lg'
+                    borderColor='outline.variant'
+                    borderWidth={1}
+                    cursor={'pointer'}
+                    transition={'all'}
+                    _hover={{
+                      bgColor: 'surface.container.highest',
+                    }}
+                  >
+                    <HStack gap={4} p={4} w='full'>
+                      <Circle
+                        borderColor='outline.variant'
+                        borderWidth={1}
+                        size={'10'}
+                      >
+                        {item}
+                      </Circle>
+                      <VStack>
+                        <f.h2 textStyle='title.sm' color='on.surface.variant'>
+                          From
+                        </f.h2>
+                        <f.p textStyle='body.lg' color='on.surface'>
+                          € 1,065 per person
+                        </f.p>
+                      </VStack>
+                    </HStack>
+
+                    <Image
+                      src='https://picsum.photos/seed/tech/600/600'
+                      alt='123'
+                      w='5rem'
+                      h='5rem'
+                      htmlWidth={'5rem'}
+                      htmlHeight='5rem'
+                      aspectRatio={1}
+                      rounded='inherit'
+                    />
+                  </Flex>
+                ))}
+              </VStack>
+            </VStack>
+          </GridItem>
+          <GridItem bgColor='secondary'>second</GridItem>
+          <GridItem bgColor='tertiary'>third</GridItem>
+        </Grid>
       </Container>
     </>
   );
