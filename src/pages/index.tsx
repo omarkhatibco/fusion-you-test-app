@@ -28,7 +28,7 @@ export default function Home() {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <Container>
+      <Container maxW={'full'}>
         <Flex w='full' display={'flex'} justifyContent={'space-between'} py={8}>
           <Logo width={'108px'} />
           <Avatar.Root>
