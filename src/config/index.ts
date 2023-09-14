@@ -1,4 +1,4 @@
-const GOOGLE_MAP_API_KEY = 'AIzaSyAIy4Paa44QA0130pL0Ulov2K-H0V7xmM0';
+export const GOOGLE_MAP_API_KEY = 'AIzaSyAIy4Paa44QA0130pL0Ulov2K-H0V7xmM0';
 
 export const polyline = [
   { lng: 150.439802, lat: -35.183557 },
